@@ -13,3 +13,5 @@ to use rustlings course
 + rustlings init
 + cd rustlings/
 + rustlings
+
+test
