@@ -1,0 +1,4 @@
+check if rust is installed with rustc --version command
+your rust files will end with .rs so just create a main.rs
+fn means function rust is really c++ like in syntax
+use rustc filename.rs to compile  and ./filename to run
