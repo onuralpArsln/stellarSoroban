@@ -1,0 +1,9 @@
+if you already installad stellar cli you can now generate a stealer cli project 
+
+use stellar contract init soroban-hello-world to generate your first contract 
+
+cargo.toml  is a rust worksapce that allows multiple smart contract inside one project
+
+rust workspace is a cargo feature that allows management of multiple packages inside single project
+
+

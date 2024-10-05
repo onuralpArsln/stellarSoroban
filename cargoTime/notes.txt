@@ -7,4 +7,9 @@ so if ve have a rustc why use cargo build ?
 it is beacuse cargo build better works when there are many dependecies
 lib.rs libraryr geliştirmek için main.rs uygulama geliştirmek için
 lib.rs oluşturmak için cargo new projec_name --lib 
- normal bir cargo new project_name yapıp sonra src içine lib.rs ekleyebilirsin böylece hem uygulama hem  lib olabilirsin
+
+you can add a lib.rs to your application with main.rs so your project can be used as a stand alone tool or a lib
+
+you use your lib.rs by using "use name_in_cargo.toml::{func_names}"
+
+after using your lib.rs funcs inside main.rs you can cargo build and then cargo run
