@@ -5,6 +5,18 @@ we will start with getting rust and using rust basics.
 
 to get rust please visit -> rust-lang.org
 
+to check your rust installation you can use 
+
+rustc -V
+
+rustc --version
+
+cargo --version
+
+cargo -V
+
+to see if those commands return a value, generally you can use -V or --version to check installations. Beware that you might need to restart your terminal to ensure that freshly installed commands are recognized by your system. 
+
 then try rustlings course from ->  https://github.com/rust-lang/rustlings/
 
 to use rustlings course  
@@ -14,12 +26,12 @@ to use rustlings course
 + cd rustlings/
 + rustlings
 
-you can also use rustrover for a comfortable rust development 
+you can also use rustrover for a comfortable rust development, at the time of this repo being written rust rover is a free for non-commercial use ide for rust. You can definitely go with vsc zed vim sublime text or any other editor you might enjoy.
 
 you should learn about cargo which is the package manager for rust 
 you can use rustc to compile but cargo build makes it better for larger projects  with dependeices
 
 
 
-to get started with stellar you can visit ->  https://developers.stellar.org/docs/tools/developer-tools/cli/install-cli 
+to get started with stellar you can visit ->  https://developers.stellar.org/docs/build/smart-contracts/getting-started/setup
 to installer stellar cli
