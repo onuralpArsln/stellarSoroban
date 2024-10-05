@@ -1,1 +1,2 @@
 it is just to remind me to use rustrover command on my terminal to launch rust rover i often forget and use vim 
+use rustrover project_name to launch in project on rust 

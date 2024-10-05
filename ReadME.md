@@ -14,4 +14,12 @@ to use rustlings course
 + cd rustlings/
 + rustlings
 
-test
+you can also use rustrover for a comfortable rust development 
+
+you should learn about cargo which is the package manager for rust 
+you can use rustc to compile but cargo build makes it better for larger projects  with dependeices
+
+
+
+to get started with stellar you can visit ->  https://developers.stellar.org/docs/tools/developer-tools/cli/install-cli 
+to installer stellar cli
