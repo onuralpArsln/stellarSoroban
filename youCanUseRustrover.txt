@@ -1,0 +1,1 @@
+it is just to remind me to use rustrover command on my terminal to launch rust rover i often forget and use vim 

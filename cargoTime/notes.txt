@@ -1,0 +1,10 @@
+Cargo is a package manager lik nuget pip npm luarocks but for rust
+
+it has commands like cargo new project_name to generate a new project
+cargo build to build and cargo run to run
+
+so if ve have a rustc why use cargo build ? 
+it is beacuse cargo build better works when there are many dependecies
+lib.rs libraryr geliştirmek için main.rs uygulama geliştirmek için
+lib.rs oluşturmak için cargo new projec_name --lib 
+ normal bir cargo new project_name yapıp sonra src içine lib.rs ekleyebilirsin böylece hem uygulama hem  lib olabilirsin
