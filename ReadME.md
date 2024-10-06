@@ -9,12 +9,12 @@ to get rust please visit -> rust-lang.org
 
 to check your rust installation you can use 
 
-'''
+```
 rustc -V
 rustc --version
 cargo --version
 cargo -V
-'''
+```
 
 to see if those commands return a value, generally you can use -V or --version to check installations. Beware that you might need to restart your terminal to ensure that freshly installed commands are recognized by your system. 
 
