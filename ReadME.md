@@ -35,3 +35,21 @@ you can use rustc to compile but cargo build makes it better for larger projects
 
 to get started with stellar you can visit ->  https://developers.stellar.org/docs/build/smart-contracts/getting-started/setup
 to installer stellar cli
+
+## First Contract
+______________________________
+for first project we will follow -> https://developers.stellar.org/docs/build/smart-contracts/getting-started/hello-world
+
+This simply creates a contract and explains the structure
+On our repo it is within stellarCLI/soroban-hello-world
+
+
+if you already installad stellar cli you can now generate a stealer cli project 
+
+use stellar contract init soroban-hello-world to generate your first contract 
+
+cargo.toml  is a rust worksapce that allows multiple smart contract inside one project
+
+rust workspace is a cargo feature that allows management of multiple packages inside single project
+
+
