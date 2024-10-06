@@ -98,4 +98,28 @@ A `.wasm` file should appear on `target/wasm32-unknown-unknown/release/hello_wor
 
 The extension `.wasm` stands for **WebAssembly** binary file.
 
+### Optimizing Builds
+
+It is important to reduce file size when working with anything web related. Smaller file means less download time making process go faster.
+
+So if you do not have the `opt` feature on your stellar-cli you need to download it. To check a feature in your stellar-cli you can run 
+
+```
+stellar <feature_name> --help
+
+```
+
+in our case run 
+
+```
+stellar opt --help
+
+```
+if there is command as opt you need to run  
+
+```
+cargo install --locked stellar-cli --features opt
+```
+
+
 ---
