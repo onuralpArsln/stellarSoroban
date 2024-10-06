@@ -70,7 +70,7 @@ stellar contract init soroban-hello-world
 A **Rust workspace** is a feature of Cargo that allows you to manage multiple packages within a single project. This is useful when building larger applications with multiple smart contracts or libraries.
 
 After reading trough the main.rs and lib.rs of this first project from 
-[`hello_world/src` directory](https://github.com/onuralpArsln/stellarSoroban/tree/main/stellarCLI/soroban-hello-world/contracts/hello_world/src) you can proceed to compile this project.
+[`stellarCLI/soroban-hello-world-contracts-hello_world/src` directory](https://github.com/onuralpArsln/stellarSoroban/tree/main/stellarCLI/soroban-hello-world/contracts/hello_world/src) you can proceed to compile this project.
 
 
 ### Run the Test
@@ -79,7 +79,11 @@ On your terminal execute `cargo test` to run your unit test expected output is a
 
 ### Build the Contract
 
-To build this project run `stellar contract build`
+To build this project run
+
+ ```
+stellar contract build
+```
 
 one expected error in this step is 
 >can't find crate for 'core'
@@ -88,4 +92,10 @@ which causes due to lack of installation wasm32 target during setup. Can be solv
 ```
 rustup target add wasm32-unknown-unknown
 ```
+
+The `stellar contract build`  command is a short hand for `cargo build --target wasm32-unknown-unknown --release`. It makes cargo build to target wasm32-unknown-unknown and makes its profile to release.
+A `.wasm` file should appear on `target/wasm32-unknown-unknown/release/hello_world.wasm`
+
+The extension `.wasm` stands for **WebAssembly** binary file.
+
 ---
