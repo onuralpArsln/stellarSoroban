@@ -49,7 +49,9 @@ To get started with Stellar and set up the environment, visit: [Stellar Develope
 
 ## First Contract
 
-For your first project, follow the tutorial here: [Stellar Hello World Contract](https://developers.stellar.org/docs/build/smart-contracts/getting-started/hello-world).
+For your first project, we will follow the tutorial here: [Stellar Hello World Contract](https://developers.stellar.org/docs/build/smart-contracts/getting-started/hello-world).
+
+This part is a my starter friendlier version of it explaining small details in simpler terms and adding comments inside the code snippets to make easier to read through for starters.
 
 This tutorial helps you create a simple contract and explains the structure. In this repository, you can find it under `thisRepo/stellarCLI/soroban-hello-world`.
 
@@ -67,6 +69,23 @@ stellar contract init soroban-hello-world
 
 A **Rust workspace** is a feature of Cargo that allows you to manage multiple packages within a single project. This is useful when building larger applications with multiple smart contracts or libraries.
 
-After reading trough the 
-[`stellarCLI/soroban-hello-world`](./stellarCLI/soroban-hello-world).
+After reading trough the main.rs and lib.rs of this first project from 
+[`.stellarCLI/soroban-hello-world/contracts/hello_world/src`](.stellarCLI/soroban-hello-world/contracts/hello_world/src) you can proceed to compile this project.
+
+
+### Run the Test
+
+On your terminal execute `cargo test` to run your unit test expected output is a success message.
+
+### Build the Contract
+
+To build this project run `stellar contract build`
+
+one expected error in this step is 
+>can't find crate for 'core'
+
+which causes due to lack of installation wasm32 target during setup. Can be solved by 
+```
+rustup target add wasm32-unknown-unknown
+```
 ---
