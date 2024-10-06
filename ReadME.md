@@ -21,7 +21,8 @@ These commands should return version information for `rustc` (the Rust compiler)
 
 ### Learn Rust Basics
 
-We recommend starting with the Rustlings course, which you can find here: [Rustlings GitHub Repository](https://github.com/rust-lang/rustlings/).
+For this project you do not required to know intensive amount of rust. But it is nice to know. you can quickly realize that it has a `C`/`C++` like syntax and feel. You can go for the `rustBBasics` within this repo and then `cargoTime` to learn enaough rust and cargo for this project or you can delve deeper with the Rustlings course.
+We recommend going on with the Rustlings course to learn rust in a robust way, which you can find here: [Rustlings GitHub Repository](https://github.com/rust-lang/rustlings/).
 
 To use the Rustlings course, run:
 
@@ -38,7 +39,7 @@ For a comfortable Rust development experience, you can use **RustRover**, which 
 
 ### Learn About Cargo
 
-**Cargo** is Rust's package manager and build system. Although you can compile Rust code using `rustc`, using `cargo build` is more convenient for larger projects with dependencies.
+**Cargo** is Rust's package manager and build system. Although you can compile Rust code using `rustc`, using `cargo build` is more convenient for larger projects with dependencies. In `cargoTime` of this repo you can find simple introduction to cargo. Since it is a package manager if you used any package manager before, it is more or less similiar user experince. 
 
 ### Getting Started with Stellar
 
