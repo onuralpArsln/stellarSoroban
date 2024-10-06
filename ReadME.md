@@ -1,60 +1,69 @@
-## Start your web3 journey  
+## Start Your Web3 Journey  
 
-This is a stelart soroban learning repo using rust.
+This is a **Stellar Soroban learning repository using Rust**.
 
+We will begin by setting up Rust and covering some basic Rust concepts.
 
-We will start with getting rust and using rust basics.
+### Install Rust
 
-to get rust please visit -> rust-lang.org
+To get Rust, please visit [rust-lang.org](https://www.rust-lang.org).
 
-to check your rust installation you can use 
+After installing Rust, you can verify your installation by running:
 
-```
+```sh
 rustc -V
 rustc --version
 cargo --version
 cargo -V
 ```
 
-to see if those commands return a value, generally you can use -V or --version to check installations. Beware that you might need to restart your terminal to ensure that freshly installed commands are recognized by your system. 
+These commands should return version information for `rustc` (the Rust compiler) and `cargo` (Rust's package manager). You may need to restart your terminal to ensure the newly installed commands are recognized by your system.
 
-then try rustlings course from ->  https://github.com/rust-lang/rustlings/
+### Learn Rust Basics
 
-to use rustlings course  
+We recommend starting with the Rustlings course, which you can find here: [Rustlings GitHub Repository](https://github.com/rust-lang/rustlings/).
 
-+ cargo install rustlings
-+ rustlings init
-+ cd rustlings/
-+ rustlings
+To use the Rustlings course, run:
 
-you can also use rustrover for a comfortable rust development, at the time of this repo being written rust rover is a free for non-commercial use ide for rust. You can definitely go with vsc zed vim sublime text or any other editor you might enjoy.
+```sh
+cargo install rustlings
+rustlings init
+cd rustlings/
+rustlings
+```
 
-you should learn about cargo which is the package manager for rust 
-you can use rustc to compile but cargo build makes it better for larger projects  with dependeices
+### Choosing an IDE
 
+For a comfortable Rust development experience, you can use **RustRover**, which is currently free for non-commercial use. Alternatively, you can use **VS Code**, **Zed**, **Vim**, **Sublime Text**, or any other editor you prefer.
 
+### Learn About Cargo
 
-to get started with stellar you can visit ->  https://developers.stellar.org/docs/build/smart-contracts/getting-started/setup
-to installer stellar cli
+**Cargo** is Rust's package manager and build system. Although you can compile Rust code using `rustc`, using `cargo build` is more convenient for larger projects with dependencies.
 
-______________________________
+### Getting Started with Stellar
 
+To get started with Stellar and set up the environment, visit: [Stellar Developers - Getting Started](https://developers.stellar.org/docs/build/smart-contracts/getting-started/setup). This page also includes instructions on how to install the Stellar CLI.
 
+---
 
 ## First Contract
 
-for first project we will follow -> https://developers.stellar.org/docs/build/smart-contracts/getting-started/hello-world
+For your first project, follow the tutorial here: [Stellar Hello World Contract](https://developers.stellar.org/docs/build/smart-contracts/getting-started/hello-world).
 
-This simply creates a contract and explains the structure
-On our repo it is within stellarCLI/soroban-hello-world
+This tutorial helps you create a simple contract and explains the structure. In this repository, you can find it under `stellarCLI/soroban-hello-world`.
 
+### Generate Your First Contract
 
-if you already installad stellar cli you can now generate a stealer cli project 
+If you have already installed the Stellar CLI, you can generate a Stellar CLI project using:
 
-use stellar contract init soroban-hello-world to generate your first contract 
+```sh
+stellar contract init soroban-hello-world
+```
 
-cargo.toml  is a rust worksapce that allows multiple smart contract inside one project
+### Understanding `Cargo.toml` and Rust Workspaces
 
-rust workspace is a cargo feature that allows management of multiple packages inside single project
+`Cargo.toml` is a configuration file used in Rust projects. It allows you to manage dependencies and define project metadata.
 
+A **Rust workspace** is a feature of Cargo that allows you to manage multiple packages within a single project. This is useful when building larger applications with multiple smart contracts or libraries.
 
+---
