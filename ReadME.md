@@ -51,7 +51,7 @@ To get started with Stellar and set up the environment, visit: [Stellar Develope
 
 For your first project, follow the tutorial here: [Stellar Hello World Contract](https://developers.stellar.org/docs/build/smart-contracts/getting-started/hello-world).
 
-This tutorial helps you create a simple contract and explains the structure. In this repository, you can find it under `stellarCLI/soroban-hello-world`.
+This tutorial helps you create a simple contract and explains the structure. In this repository, you can find it under `thisRepo/stellarCLI/soroban-hello-world`.
 
 ### Generate Your First Contract
 
@@ -67,4 +67,6 @@ stellar contract init soroban-hello-world
 
 A **Rust workspace** is a feature of Cargo that allows you to manage multiple packages within a single project. This is useful when building larger applications with multiple smart contracts or libraries.
 
+After reading trough the 
+[`stellarCLI/soroban-hello-world`](./stellarCLI/soroban-hello-world).
 ---
