@@ -70,7 +70,7 @@ stellar contract init soroban-hello-world
 A **Rust workspace** is a feature of Cargo that allows you to manage multiple packages within a single project. This is useful when building larger applications with multiple smart contracts or libraries.
 
 After reading trough the main.rs and lib.rs of this first project from 
-[`.stellarCLI/soroban-hello-world/contracts/hello_world/src`](.stellarCLI/soroban-hello-world/contracts/hello_world/src) you can proceed to compile this project.
+[`hello_world/src` directory](https://github.com/onuralpArsln/stellarSoroban/tree/main/stellarCLI/soroban-hello-world/contracts/hello_world/src) you can proceed to compile this project.
 
 
 ### Run the Test
