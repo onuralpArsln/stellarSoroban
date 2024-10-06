@@ -21,7 +21,7 @@ These commands should return version information for `rustc` (the Rust compiler)
 
 ### Learn Rust Basics
 
-For this project you do not required to know intensive amount of rust. But it is nice to know. you can quickly realize that it has a `C`/`C++` like syntax and feel. You can go for the `rustBasics` within this repo and then `cargoTime` to learn enaough rust and cargo for this project or you can delve deeper with the Rustlings course.
+For this project you do not required to know intensive amount of rust. But it is nice to know. you can quickly realize that it has a `C`/`C++` like syntax and feel. You can go for the `thisRepo/rustBasics` within this repo and then `thisRepo/cargoTime` to learn enough rust and cargo for this project or you can delve deeper with the Rustlings course.
 We recommend going on with the Rustlings course to learn rust in a robust way, which you can find here: [Rustlings GitHub Repository](https://github.com/rust-lang/rustlings/).
 
 To use the Rustlings course, run:
