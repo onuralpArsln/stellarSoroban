@@ -1,19 +1,20 @@
-## This is a stelart soroban learning repo using rust.
+## Start your web3 journey  
+
+This is a stelart soroban learning repo using rust.
 
 
-we will start with getting rust and using rust basics.
+We will start with getting rust and using rust basics.
 
 to get rust please visit -> rust-lang.org
 
 to check your rust installation you can use 
 
+"""
 rustc -V
-
 rustc --version
-
 cargo --version
-
 cargo -V
+"""
 
 to see if those commands return a value, generally you can use -V or --version to check installations. Beware that you might need to restart your terminal to ensure that freshly installed commands are recognized by your system. 
 
