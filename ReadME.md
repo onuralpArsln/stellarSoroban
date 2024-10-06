@@ -36,8 +36,12 @@ you can use rustc to compile but cargo build makes it better for larger projects
 to get started with stellar you can visit ->  https://developers.stellar.org/docs/build/smart-contracts/getting-started/setup
 to installer stellar cli
 
-## First Contract
 ______________________________
+
+
+
+## First Contract
+
 for first project we will follow -> https://developers.stellar.org/docs/build/smart-contracts/getting-started/hello-world
 
 This simply creates a contract and explains the structure
