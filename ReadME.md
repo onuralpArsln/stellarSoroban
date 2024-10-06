@@ -75,7 +75,14 @@ After reading trough the main.rs and lib.rs of this first project from
 
 ### Run the Test
 
-On your terminal execute `cargo test` to run your unit test expected output is a success message.
+On your terminal execute 
+
+```
+cargo test
+```
+ to run your unit test expected output is a success message. You need to be on your `soroban-hello-world` directory.
+
+ Note that for your first time it needs to compile many files so you will be seeing lots of compiling output during first test.
 
 ### Build the Contract
 
@@ -112,14 +119,19 @@ stellar <feature_name> --help
 in our case run 
 
 ```
-stellar opt --help
+stellar contract optimize  --help
 
 ```
-if there is command as opt you need to run  
+
+This is a rule of thumb you can check with --help to see if your command chain is installed.
+ 
+
+if there is no command as you need to run  
 
 ```
 cargo install --locked stellar-cli --features opt
 ```
+It might say `Ignored package `stellar-cli v21.5.0` is already installed, use --force to override` this means you already have it installed do not `--force`  it.
 
 
 ---
