@@ -100,6 +100,19 @@ which causes due to lack of installation wasm32 target during setup. Can be solv
 rustup target add wasm32-unknown-unknown
 ```
 
+To check targets you have installed on your device you can run 
+
+```
+rustup target list --installed
+```
+
+and if you want to remove one  use 
+```
+rustup target remove <target_name>
+
+```
+
+
 The `stellar contract build`  command is a short hand for `cargo build --target wasm32-unknown-unknown --release`. It makes cargo build to target wasm32-unknown-unknown and makes its profile to release.
 A `.wasm` file should appear on `target/wasm32-unknown-unknown/release/hello_world.wasm`
 
