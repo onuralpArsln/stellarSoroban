@@ -8,6 +8,8 @@ We will begin by setting up Rust and covering some basic Rust concepts.
 
 To get Rust, please visit [rust-lang.org](https://www.rust-lang.org).
 
+❗❗❗You need to update the path after installation of rust. read the message after installation do not close your terminal after initial installation command completed. Read on screen instructions. ❗❗❗
+
 After installing Rust, you can verify your installation by running:
 
 ```sh
@@ -95,10 +97,12 @@ stellar contract build
 one expected error in this step is 
 >can't find crate for 'core'
 
-which causes due to lack of installation wasm32 target during setup. Can be solved by 
+which causes due to lack of installation wasm32 target during setup. Can be solved by:
 ```
 rustup target add wasm32-unknown-unknown
 ```
+
+If problem persists after this refer to following section.
 
 To check targets you have installed on your device you can run 
 
@@ -112,11 +116,62 @@ rustup target remove <target_name>
 
 ```
 
-
 The `stellar contract build`  command is a short hand for `cargo build --target wasm32-unknown-unknown --release`. It makes cargo build to target wasm32-unknown-unknown and makes its profile to release.
 A `.wasm` file should appear on `target/wasm32-unknown-unknown/release/hello_world.wasm`
 
 The extension `.wasm` stands for **WebAssembly** binary file.
+
+
+---
+#### 🔔 If "error[E0463]: can't find crate for `core`" persists
+
+There are few methods you can take to solve your problem. After each step try `stellar contract build` to see if problem persists. 
+
+1- clear cargo and update
+A solid for approach for many problem is to update things. Although i rarely see that an update solve problems it is often the simplest thing you can do.
+
+```sh
+cargo clean 
+rustup update
+cargo update
+```
+
+2- remove toolchain and target then reinstall them
+
+it is a simple "restart to solve"
+
+```sh
+rustup target remove wasm32-unknown-unknown
+rustup toolchain uninstall stable
+rustup toolchain install stable
+rustup target add wasm32-unknown-unknown
+```
+
+3- Reinstall rust
+
+It can solve many problems you might not aware of. If somehow your installation gets corrupted you might need to perform this step. This solved the problem in my case.
+
+❗❗❗You need to update the path after installation of rust. read the message after installation do not "enter enter skip" it❗❗❗
+
+```sh
+rustup self uninstall
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+After installation completed, you need to update the path. In my case i performed this by following command since i use  **fish** the friendly interactive shell i need to use this command. But if you use bash zsh or anything other, after installation you can  see which command you should use on your screen just copy the command related to your shell. (time of my install there were two for fish and for others)
+
+```sh
+source "$HOME/.cargo/env.fish"
+```
+
+then update to be safe
+
+```sh
+rustup update
+```
+
+---
+
 
 ### Optimizing Builds
 
@@ -146,5 +201,14 @@ cargo install --locked stellar-cli --features opt
 ```
 It might say `Ignored package `stellar-cli v21.5.0` is already installed, use --force to override` this means you already have it installed do not `--force`  it.
 
+If you have "optimize" feature installed 
+run `ls` and look for the `target` folder.
+Be sure that you are on `soroban-hello-world` file as your current working directory.
+
+Then optimize the release 
+
+```sh
+stellar contract optimize --wasm target/wasm32-unknown-unknown/release/hello_world.wasm
+```
 
 ---
