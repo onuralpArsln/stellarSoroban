@@ -309,3 +309,10 @@ impl HelloContract {
 ```
 
 It defined the public function hello, we simply called that.
+
+
+----------
+
+
+## How to store data 
+
