@@ -606,6 +606,8 @@ Be sure to stay on `./stellarSoroban/frontend_soroban`
 
 and execute to create frontend project and install dependencies
 
+this can take long time
+
 ```sh
 
 npx create-react-app frontend-page
