@@ -445,3 +445,96 @@ stellar contract invoke \
 ```
 
 Try repeating this command.
+
+
+# A Project With Frontend
+
+Up to this point we discussed basics on terminal lest move on with some shiny frontend.
+
+to start with front end we will move to completely different folder. So go back to root of this project and start a rust project
+
+be sure that you are on root of your project before moving on. Or else our structure will be complicated to follow.
+
+Now i wil create a new project named `frontend_soroban`. But do not just make a folder we are trying to create boiler plate on auto pilot so we have some tricks.
+
+So start a new rust project and move into it.
+
+```sh
+cargo new --lib frontend_soroban
+cd frontend_soroban
+```
+
+for our new project we need to fill up our cargo.toml a bit so add those to
+
+```rust
+// frontend_soroban/Cargo.toml
+
+[package]
+name = "frontend_soroban"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+soroban-sdk = "0.9.2"
+
+[dev-dependencies]
+soroban-sdk = { version = "0.9.2", features = ["testutils"] }
+
+[profile.release]
+opt-level = "z"
+overflow-checks = true
+debug = 0
+strip = "symbols"
+debug-assertions = false
+panic = "abort"
+codegen-units = 1
+lto = true
+
+```
+
+
+Now lets work on our lib.rs with 
+
+```rust
+// frontend_soroban/src/lib.rs 
+#![no_std]
+use soroban_sdk::{contractimpl, symbol, Env, Symbol};
+
+pub struct FrontendContract;
+
+#[contractimpl]
+impl FrontendContract {
+    pub fn greet(env: Env, name: Symbol) -> Symbol {
+        let prefix = Symbol::new(&env, "Welcome_");
+        Symbol::join(&env, &[prefix, name])
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    use soroban_sdk::Env;
+
+    #[test]
+    fn test() {
+        let env = Env::default();
+        let contract_id = env.register_contract(None, FrontendContract);
+        let client = FrontendContractClient::new(&env, &contract_id);
+
+        let name = Symbol::new(&env, "Developer");
+        let result = client.greet(&name);
+        assert_eq!(result, Symbol::new(&env, "Welcome_Developer"));
+    }
+}
+```
+
+before moving on to our front end lets build this new contract to testnet.
+
+build with 
+
+```sh
+soroban contract build
+```
