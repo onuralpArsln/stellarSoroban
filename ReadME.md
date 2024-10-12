@@ -316,3 +316,29 @@ It defined the public function hello, we simply called that.
 
 ## How to store data 
 
+With smart contracts you can store data.
+
+We will do an increment example where we count up and store value.
+
+In a sinle project you can init many contracts.
+
+
+```sh
+stellar contract init ./ --with-example increment
+```
+
+this command will initialize a new contract called increment.
+
+your end file structure will be 
+
+
+```sh
+└── contracts
+    ├── increment
+        ├── Cargo.lock
+        ├── Cargo.toml
+        └── src
+            ├── lib.rs
+            └── test.rs
+```
+Now we have an example setup in `contracts/increment`.
