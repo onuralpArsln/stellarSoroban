@@ -471,8 +471,13 @@ for our new project we need to fill up our root cargo.toml a bit so add those to
 ```rust
 // frontend_soroban/Cargo.toml
 [workspace]
-members = ["contracts/*"]
 resolver = "2"
+members = [
+  "contracts/*",
+]
+
+[workspace.dependencies]
+soroban-sdk = "21.0.0"
 
 [profile.release]
 opt-level = "z"
@@ -483,6 +488,11 @@ debug-assertions = false
 panic = "abort"
 codegen-units = 1
 lto = true
+
+# For more information about this profile see https://soroban.stellar.org/docs/basic-tutorials/logging#cargotoml-profile
+[profile.release-with-logs]
+inherits = "release"
+debug-assertions = true
 
 ```
 
@@ -502,12 +512,13 @@ edition = "2021"
 
 [lib]
 crate-type = ["cdylib"]
+doctest = false
 
 [dependencies]
-soroban-sdk = "0.9.2"
+soroban-sdk = { workspace = true }
 
 [dev-dependencies]
-soroban-sdk = { version = "0.9.2", features = ["testutils"] }
+soroban-sdk = { workspace = true, features = ["testutils"] }
 ```
 
 At this point you should be in `./stellarSoroban/frontend_soroban/contracts/frontend_soroban`
@@ -523,16 +534,22 @@ Now lets work on our lib.rs with
 ```rust
 // frontend_soroban/src/lib.rs 
 #![no_std]
-use soroban_sdk::{contractimpl, symbol, Env, Symbol};
+use soroban_sdk::{contract, contractimpl, vec, Env, String, Vec, log, symbol_short, Symbol};
 
+
+#[contract]
 pub struct FrontendContract;
 
 #[contractimpl]
 impl FrontendContract {
-    pub fn greet(env: Env, name: Symbol) -> Symbol {
-        let prefix = Symbol::new(&env, "Welcome_");
-        Symbol::join(&env, &[prefix, name])
+       pub fn greet(env: Env, name: Symbol) -> Vec<Symbol> {
+        // Create the prefix symbol
+           let prefix = Symbol::new(&env, "Welcome");
+        
+        // Create a vector of Symbols
+        vec![&env, prefix, name]
     }
+
 }
 
 #[cfg(test)]
@@ -560,3 +577,24 @@ build with
 ```sh
 soroban contract build
 ```
+
+and deploy it 
+
+```sh
+stellar contract deploy \
+  --wasm target/wasm32-unknown-unknown/release/frontend_soroban.wasm \
+  --source alice \
+  --network testnet
+  ```
+
+Change the id as required
+
+  ```sh
+stellar contract invoke \
+  --id CCKXTFAF2NYP5DR4B7B3SYSNNFXIFOSQDPSKQ3HT3S4RE3C7XHRCWCSC \
+  --source alice \
+  --network testnet \
+  -- \
+  greet \
+  --name Onuralp
+  ```

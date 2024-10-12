@@ -14,6 +14,7 @@ impl FrontendContract {
         // Create a vector of Symbols
         vec![&env, prefix, name]
     }
+
 }
 
 #[cfg(test)]
