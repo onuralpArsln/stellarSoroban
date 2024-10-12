@@ -213,7 +213,7 @@ stellar contract optimize --wasm target/wasm32-unknown-unknown/release/hello_wor
 
 ---
 
-## Deploy Time 
+### Deploy Time 
 
 In blockchain world testnet is a mockup part. You can think it as a "playground" or "sandbox" 
 versions of projects allowing your work to be tested without real world risks.
@@ -272,7 +272,7 @@ So you can check your details over that link
 
 ---
 
-## Interact with your code  
+### Interact with your code  
 
 We will make RPC calls with CLI
 
@@ -406,7 +406,7 @@ All contract data has a Time To Live (TTL), measured in ledgers, that must be pe
  Every time the counter is incremented, this storage's TTL gets extended by 100 ledgers, or about 500 seconds.
 
 
-## Build it again
+### Build it again
 
 remeber to be on inside stellar-hello-world and be able to see contracts when running `ls`
 ```sh
@@ -418,7 +418,7 @@ lets see your wasm builds with
 ```sh
 ls target/wasm32-unknown-unknown/release/*.wasm
 ```
-## Deploy time 
+### Deploy time 
 
 To deploy see how i change the name of release file 
 
@@ -431,7 +431,7 @@ stellar contract deploy \
 
 It yielded me a new id and i recorded it.
 
-## See some increment
+### See some increment
 
 ```sh
 
@@ -447,7 +447,7 @@ stellar contract invoke \
 Try repeating this command.
 
 
-# A Project With Frontend
+## A Project With Frontend
 
 Up to this point we discussed basics on terminal lest move on with some shiny frontend.
 
@@ -455,6 +455,7 @@ to start with front end we will move to completely different folder. So go back 
 
 be sure that you are on root of your project before moving on. Or else our structure will be complicated to follow.
 
+### Backend before Front
 
 Now i wil create a new project named `frontend_soroban`. 
 
@@ -598,3 +599,27 @@ stellar contract invoke \
   greet \
   --name Onuralp
   ```
+
+### Frontend Time
+
+Be sure to stay on `./stellarSoroban/frontend_soroban`
+
+and execute to create frontend project and install dependencies
+
+```sh
+
+npx create-react-app frontend-page
+cd frontend-page
+npm install @stellar/stellar-sdk soroban-client
+```
+
+If your frontend-page is not created you might need to update the node
+to update node 
+
+```sh
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
+```
+
+After creating new frontend project go inside 
