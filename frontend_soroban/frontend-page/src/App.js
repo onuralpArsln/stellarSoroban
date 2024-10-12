@@ -12,7 +12,8 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const server = new SorobanRpc.Server(rpcUrl);
+    // Adjust according to the actual structure of the SorobanRpc
+    const server = new SorobanRpc(rpcUrl); // or check how to correctly instantiate it
     const contract = new Contract(contractId);
 
     try {
