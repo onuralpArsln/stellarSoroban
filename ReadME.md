@@ -343,7 +343,7 @@ your end file structure will be
 ```
 Now we have an example setup in `contracts/increment`.
 
-Look at the lib.rs but we will explain details here 
+Look at the lib.rs but we will explain details here about the code
 
 exclude rust std and include basics 
 
@@ -364,3 +364,84 @@ you can call this key to learn data later
 The symbol_short!() macro is a convenient way to 
 pre-compute short symbols up to 9 characters in 
 length at compile time using Symbol::short.
+
+
+To use count 
+
+```rust
+// from contracts/increment/src/lib.rs
+let mut count: u32 = env
+    .storage()
+    .instance()
+    .get(&COUNTER)
+    .unwrap_or(0); // If no value set, assume 0.
+```
+
+Rust part of this  `let mut count: u32`
+
+
+The Env.storage() function is used to access and update contract data.
+The executing contract is the only contract that can query or modify contract 
+data that it has stored. The data stored is viewable on ledger anywhere the ledger
+is viewable, but contracts executing within the Soroban environment are restricted to their own data.
+
+The get() function gets the current value associated with the counter key.
+
+If no value is currently stored, the value given to unwrap_or(...) is returned instead.
+
+
+```rust
+env.storage()
+    .instance()
+    .set(&COUNTER, &count);
+```
+
+With set you define a new number
+
+```rust
+env.storage().instance().extend_ttl(100, 100);
+```
+
+All contract data has a Time To Live (TTL), measured in ledgers, that must be periodically extended. If an entry's TTL is not periodically extended, the entry will eventually become "archived." You can learn more about this in the State Archival document.
+ Every time the counter is incremented, this storage's TTL gets extended by 100 ledgers, or about 500 seconds.
+
+
+## Build it again
+
+remeber to be on inside stellar-hello-world and be able to see contracts when running `ls`
+```sh
+stellar contract build
+```
+
+lets see your wasm builds with 
+
+```sh
+ls target/wasm32-unknown-unknown/release/*.wasm
+```
+## Deploy time 
+
+To deploy see how i change the name of release file 
+
+```sh
+stellar contract deploy \
+  --wasm target/wasm32-unknown-unknown/release/soroban_increment_contract.wasm \
+  --source alice \
+  --network testnet
+```
+
+It yielded me a new id and i recorded it.
+
+## See some increment
+
+```sh
+
+stellar contract invoke \
+  --id CAFGG6EPIGYAEJ7DZWLOYRVQ75SPRH4MUOCKFRQMZMGVYBICDLLSJRLQ \
+  --source alice \
+  --network testnet \
+  -- \
+  increment
+
+```
+
+Try repeating this command.
