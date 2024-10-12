@@ -342,3 +342,25 @@ your end file structure will be
             └── test.rs
 ```
 Now we have an example setup in `contracts/increment`.
+
+Look at the lib.rs but we will explain details here 
+
+exclude rust std and include basics 
+
+```rust
+#![no_std]
+use soroban_sdk::{contract, contractimpl, log, symbol_short, Env, Symbol};
+```
+
+###  Contract Data keys
+
+```rust
+const COUNTER: Symbol = symbol_short!("COUNTER");
+```
+
+You create a key for data you want to store and 
+you can call this key to learn data later
+
+The symbol_short!() macro is a convenient way to 
+pre-compute short symbols up to 9 characters in 
+length at compile time using Symbol::short.
