@@ -212,3 +212,18 @@ stellar contract optimize --wasm target/wasm32-unknown-unknown/release/hello_wor
 ```
 
 ---
+
+## Deploy Time 
+
+In blockchain world testnet is a mockup part. You can think it as a "playground" or "sandbox" 
+versions of projects allowing your work to be tested without real world risks.
+
+To deploy we first need to prepare our CLI for deployment.
+much of next steps are from -> [`Setup Stellar Configuring the CLI for Testnet `](https://developers.stellar.org/docs/build/smart-contracts/getting-started/setup#configuring-the-cli-for-testnet)
+
+```sh
+stellar contract deploy \
+  --wasm target/wasm32-unknown-unknown/release/hello_world.wasm \
+  --source GCC7L3KPTJ6MREZKJFSQRORPXCXSGW55YY2MO45PEJXERCGDA6FBWPXO \
+  --network testnet
+```
