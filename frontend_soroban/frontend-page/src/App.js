@@ -1,23 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { SorobanRpc, Contract } from 'soroban-client';
+import { xdr, Networks } from 'stellar-sdk';
+
+const contractId = 'YOUR_CONTRACT_ID_HERE'; // Replace with your deployed contract ID
+const rpcUrl = 'https://soroban-testnet.stellar.org';
 
 function App() {
+  const [name, setName] = useState('');
+  const [greeting, setGreeting] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const server = new SorobanRpc.Server(rpcUrl);
+    const contract = new Contract(contractId);
+
+    try {
+      const result = await server.simulateTransaction(
+        contract.call('greet', xdr.ScVal.scSymbol(name))
+      );
+
+      if (result.result) {
+        const greetingSymbol = xdr.ScVal.fromXDR(result.result.retval);
+        setGreeting(greetingSymbol.sym());
+      }
+    } catch (error) {
+      console.error('Error calling contract:', error);
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Soroban Frontend Demo</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Enter your name"
+        />
+        <button type="submit">Get Greeting</button>
+      </form>
+      {greeting && <p>{greeting}</p>}
     </div>
   );
 }
