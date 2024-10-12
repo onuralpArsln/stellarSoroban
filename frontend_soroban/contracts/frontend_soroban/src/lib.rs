@@ -7,10 +7,12 @@ pub struct FrontendContract;
 
 #[contractimpl]
 impl FrontendContract {
-    pub fn greet(env: Env, name: Symbol) -> Symbol {
-        let prefix = Symbol::new(&env, "Welcome");
-        let result = env.symbol_concat(&[&prefix, &Symbol::new(&env, "_"), &name]);
-        result
+       pub fn greet(env: Env, name: Symbol) -> Vec<Symbol> {
+        // Create the prefix symbol
+           let prefix = Symbol::new(&env, "Welcome");
+        
+        // Create a vector of Symbols
+        vec![&env, prefix, name]
     }
 }
 

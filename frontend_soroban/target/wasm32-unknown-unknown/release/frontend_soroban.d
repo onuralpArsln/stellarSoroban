@@ -1,0 +1,1 @@
+/home/onuralp/projects/stellarSoroban/frontend_soroban/target/wasm32-unknown-unknown/release/frontend_soroban.wasm: /home/onuralp/projects/stellarSoroban/frontend_soroban/contracts/frontend_soroban/src/lib.rs
