@@ -455,20 +455,46 @@ to start with front end we will move to completely different folder. So go back 
 
 be sure that you are on root of your project before moving on. Or else our structure will be complicated to follow.
 
-Now i wil create a new project named `frontend_soroban`. But do not just make a folder we are trying to create boiler plate on auto pilot so we have some tricks.
 
-So start a new rust project and move into it.
+Now i wil create a new project named `frontend_soroban`. 
+
 
 ```sh
-cargo new --lib frontend_soroban
+mkdir -p frontend_soroban/contracts/frontend_soroban/src
 cd frontend_soroban
+touch Cargo.toml
 ```
 
-for our new project we need to fill up our cargo.toml a bit so add those to
+
+for our new project we need to fill up our root cargo.toml a bit so add those to
 
 ```rust
 // frontend_soroban/Cargo.toml
+[workspace]
+members = ["contracts/*"]
+resolver = "2"
 
+[profile.release]
+opt-level = "z"
+overflow-checks = true
+debug = 0
+strip = "symbols"
+debug-assertions = false
+panic = "abort"
+codegen-units = 1
+lto = true
+
+```
+
+but now we need also a cargo.toml for the contract  at `frontend_soroban/contracts/frontend_soroban/Cargo.toml`
+
+```sh
+touch contracts/frontend_soroban/Cargo.toml
+```
+
+and add given code into  `contracts/frontend_soroban/Cargo.toml`
+
+```rust
 [package]
 name = "frontend_soroban"
 version = "0.1.0"
@@ -482,17 +508,13 @@ soroban-sdk = "0.9.2"
 
 [dev-dependencies]
 soroban-sdk = { version = "0.9.2", features = ["testutils"] }
+```
 
-[profile.release]
-opt-level = "z"
-overflow-checks = true
-debug = 0
-strip = "symbols"
-debug-assertions = false
-panic = "abort"
-codegen-units = 1
-lto = true
+At this point you should be in `./stellarSoroban/frontend_soroban/contracts/frontend_soroban`
+so go inside `./src` to create our  `lib.rs`
 
+```sh
+touch src/lib.rs
 ```
 
 
