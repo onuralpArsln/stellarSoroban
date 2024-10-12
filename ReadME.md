@@ -221,9 +221,91 @@ versions of projects allowing your work to be tested without real world risks.
 To deploy we first need to prepare our CLI for deployment.
 much of next steps are from -> [`Setup Stellar Configuring the CLI for Testnet `](https://developers.stellar.org/docs/build/smart-contracts/getting-started/setup#configuring-the-cli-for-testnet)
 
+I am writing for unix, if you are on windows complete the setup process from the link given above.
+
+Lets setup for testnet, that is not a deployment server it is for testing purposes.
+
+```sh
+stellar network add \
+  --global testnet \
+  --rpc-url https://soroban-testnet.stellar.org:443 \
+  --network-passphrase "Test SDF Network ; September 2015"
+  ```
+
+This creates `~/.config/soroban/network/testnet.toml` and allows your cli commands to be used for testnet. `--network testnet` can be used.
+
+For testnet you need and identity.(for any smart contract you need test)
+
+We will generate a key named alice, but you can go creative with names. I purposefully use same name on tutorial because this repo aims to help anyone who partly looks for tutorial and haves some problems with it. 
+
+```sh
+stellar keys generate --global alice --network testnet
+```
+after a brief wait command completes
+
+to check you have a dress now
+
+```sh
+stellar keys address alice
+```
+
+you can try different names then alice and you will see that there is no identity.
+
+Now we are ready to deploy with alice address, command below will yield a id, record it. It is end line copy it. 
+And Record it.
+This is a public value like name of a youtube video.
+
+Deployment Command 
+
 ```sh
 stellar contract deploy \
   --wasm target/wasm32-unknown-unknown/release/hello_world.wasm \
-  --source GCC7L3KPTJ6MREZKJFSQRORPXCXSGW55YY2MO45PEJXERCGDA6FBWPXO \
+  --source alice \
   --network testnet
 ```
+
+my id for this is `CDJW3Z6KNDIEFAXIRAA3CFLOZQYUTON2DZPDLD46U4CDI3W6CFSL75XR`
+
+also you will have a link like `https://stellar.expert/explorer/testnet/contract/CDJW3Z6KNDIEFAXIRAA3CFLOZQYUTON2DZPDLD46U4CDI3W6CFSL75XR` basically it is `https://stellar.expert/explorer/testnet/contract/` +`your testnet id`
+
+So you can check your details over that link
+
+---
+
+## Interact with your code  
+
+We will make RPC calls with CLI
+
+What is RPC? 
+Remote Procedure Call is a software communication protocol allowing requesting service from a program located on different machine or network without knowing whats going on in background.
+
+Isn't it what APIs do? 
+API is the framework, the general structure. RPC is how they "talk" within that framework.
+
+Lets invoke our contract.
+
+Remember you need to change you id if you want to reach to your own contract. if you copy paste this command you will be invoking my contract. Also you will return a 
+
+```sh
+stellar contract invoke \
+  --id CDJW3Z6KNDIEFAXIRAA3CFLOZQYUTON2DZPDLD46U4CDI3W6CFSL75XR \
+  --source alice \
+  --network testnet \
+  -- \
+  hello \
+  --to RPC
+  ```
+
+
+where does the `hello` comes from?
+look at src/lib.rs you will see 
+
+```rust
+impl HelloContract {
+    pub fn hello(env: Env, to: String) -> Vec<String> {
+        vec![&env, String::from_str(&env, "Hello"), to]
+    }
+}
+```
+
+It defined the public function hello, we simply called that.
