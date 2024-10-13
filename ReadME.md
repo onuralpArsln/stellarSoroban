@@ -690,6 +690,8 @@ export default App;
 
 ```
 
+be sure that you are on `./stellarSoroban/frontend_soroban/frontend-page`
+or where ever your react project is. React project is started with npm start.
 
 to run everything go 
 ```sh

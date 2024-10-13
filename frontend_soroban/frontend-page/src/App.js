@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { SorobanRpc, Contract } from 'soroban-client';
 import { xdr, Networks } from 'stellar-sdk';
 
-const contractId = 'YOUR_CONTRACT_ID_HERE'; // Replace with your deployed contract ID
+const contractId = "CCKXTFAF2NYP5DR4B7B3SYSNNFXIFOSQDPSKQ3HT3S4RE3C7XHRCWCSC"; // Replace with your deployed contract ID
 const rpcUrl = 'https://soroban-testnet.stellar.org';
 
 function App() {
