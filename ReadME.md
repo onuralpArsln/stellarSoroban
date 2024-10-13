@@ -636,6 +636,9 @@ npm install soroban-client
 
 After creating new frontend project go inside `frontend_soroban/frontend-page/src/App.js` and paste
 
+It is important to add your id of contract to `const contractId = 'YOUR_CONTRACT_ID_HERE'`
+
+
 ```jsx
 
 import React, { useState } from 'react';
