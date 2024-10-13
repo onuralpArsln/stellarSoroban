@@ -604,7 +604,7 @@ stellar contract invoke \
 
 Be sure to stay on `./stellarSoroban/frontend_soroban`
 
-and execute to create frontend project and install dependencies
+and execute to create frontend project 
 
 this can take long time
 
@@ -612,7 +612,8 @@ this can take long time
 
 npx create-react-app frontend-page
 cd frontend-page
-npm install @stellar/stellar-sdk soroban-client
+
+
 ```
 
 If your frontend-page is not created you might need to update the node
@@ -624,4 +625,73 @@ sudo npm install -g n
 sudo n stable
 ```
 
-After creating new frontend project go inside 
+
+and install dependencies
+
+```sh
+npm install @stellar/stellar-sdk soroban-client
+npm install stellar-sdk
+npm install soroban-client
+```
+
+After creating new frontend project go inside `frontend_soroban/frontend-page/src/App.js` and paste
+
+```jsx
+
+import React, { useState } from 'react';
+import { SorobanRpc, Contract } from 'soroban-client';
+import { xdr, Networks } from 'stellar-sdk';
+
+const contractId = 'YOUR_CONTRACT_ID_HERE'; // Replace with your deployed contract ID
+const rpcUrl = 'https://soroban-testnet.stellar.org';
+
+function App() {
+  const [name, setName] = useState('');
+  const [greeting, setGreeting] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const server = new SorobanRpc.Server(rpcUrl);
+    const contract = new Contract(contractId);
+
+    try {
+      const result = await server.simulateTransaction(
+        contract.call('greet', xdr.ScVal.scSymbol(name))
+      );
+
+      if (result.result) {
+        const greetingSymbol = xdr.ScVal.fromXDR(result.result.retval);
+        setGreeting(greetingSymbol.sym());
+      }
+    } catch (error) {
+      console.error('Error calling contract:', error);
+    }
+  };
+
+  return (
+    <div className="App">
+      <h1>Soroban Frontend Demo</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Enter your name"
+        />
+        <button type="submit">Get Greeting</button>
+      </form>
+      {greeting && <p>{greeting}</p>}
+    </div>
+  );
+}
+
+export default App;
+
+```
+
+
+to run everything go 
+```sh
+npm start
+```
